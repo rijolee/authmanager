@@ -1,0 +1,13 @@
+{
+    "name": "rijolee/authmanager",
+    "description": "for managing user roles and permission",
+    "type": "project",
+    "authors": [
+        {
+            "name": "rijolee",
+            "email": "rijolee@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
