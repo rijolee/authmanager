@@ -33,7 +33,7 @@ class AuthManagerServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-        __DIR__.'/views/assets' => public_path('vendor/authmanager'),
+        __DIR__.'/views/asset' => public_path('vendor/authmanager'),
         ], 'public');
 
 
