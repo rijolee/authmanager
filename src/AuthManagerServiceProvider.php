@@ -29,12 +29,12 @@ class AuthManagerServiceProvider extends ServiceProvider
         
         $this->loadViewsFrom(__DIR__.'/views','authmanager');
         $this->publishes([
-        __DIR__.'/views' => base_path('resources/views/rijolee/authmanager'),
-            ]);
+        __DIR__.'/views' => resource_path('views/vendor/authmanager'),
+        ]);
 
         $this->publishes([
-        __DIR__.'/assets' => base_path('resources/views/rijolee/authmanager'),
-            ]);
+        __DIR__.'/views/assets' => public_path('vendor/authmanager'),
+        ], 'public');
 
 
     }
