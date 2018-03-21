@@ -8,7 +8,7 @@
             "email": "rijolee@yahoo.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
      "autoload": {
         "psr-4": {"rijolee\\AuthManager\\": "src/"}
     },
