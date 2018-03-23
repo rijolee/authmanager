@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web'],function(){
+Route::group(['middleware' => ['web']],function(){
 
 	//MENU
 
@@ -63,6 +63,15 @@ Route::group(['middleware' => 'web'],function(){
 		'uses' => 'rijolee\AuthManager\Controller\MenusController@trees',
 		'as' => 'authmanager.menu.trees'
 	]);
+
+	Route::get('/authmanager/getmenu/{sys}/{rootid}', [
+		'uses' => 'rijolee\AuthManager\Controller\MenusController@getmenu',
+		'as' => 'authmanager.menu.getmenu'
+	]);
+
+	
+
+
 
 
 	//EVENT

@@ -47,8 +47,9 @@ voila! you can manage your authority menu and permission for your project
 you can access function User::hasEvents($event_id, $menu_id) that return true or false based on your menu id and event id 
 so you can use it in your system to know wether this user allow some function in your system
 
-you can access route /authmanager/treesmenu/{sys}  to return JSON data your menu based on parameter your system name {sys}
-note: system name information is column in menu table
+you can access route /authmanager/getmenu/{sys}/{rootid}  to return JSON data your menu based on parameter your system name {sys}
+and your root id {rootid}
+note: system name information is column in menu table, type 'all' if you wanna get all data
 
 ## Further Documentation
 there will be further documentation for this package

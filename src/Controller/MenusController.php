@@ -250,14 +250,17 @@ class MenusController extends Controller
 
     }
 
-    public function getmenu($id)
+    public function getmenu($id, $rootid)
     {
         
        $menu = DB::select( DB::raw(
         "
         SELECT 
-        *
-        FROM menus WHERE 'all' = :param1  OR system_nm = :param2 
+        menu_id as id
+        ,case when coalesce(parent_id,'#') = '#' then '0' else parent_id end as parent 
+        ,menu_nm as name 
+        ,a.*
+        FROM menus a WHERE 'all' = :param1  OR system_nm = :param2 
         order by menu_order 
         "
        ), array(
@@ -267,11 +270,49 @@ class MenusController extends Controller
         ));
 
 
-       return response()->json($menu); 
+       $menu = collect($menu)->map(function($x){ return (array) $x; })->toArray(); 
 
 
 
 
+       $tree = $this->createTree($menu,$rootid);
+
+
+
+       return response()->json($tree); 
+
+
+
+
+    }
+
+    /* Recursive branch extrusion */
+    public function createBranch(&$parents, $children) {
+        $tree = array();
+        foreach ($children as $child) {
+            if (isset($parents[$child['id']])) {
+                $child['children'] =
+                    $this->createBranch($parents, $parents[$child['id']]);
+            }
+            $tree[] = $child;
+        } 
+        return $tree;
+    }
+
+    /* Initialization */
+    public function createTree($flat, $root) {
+        $parents = array();
+
+      
+
+
+        
+        foreach ($flat as $a) {
+            $parents[$a['parent']][] = $a;
+        }
+
+       
+        return $this->createBranch($parents, $parents[$root]);
     }
 
     
