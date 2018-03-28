@@ -4,6 +4,7 @@ namespace rijolee\AuthManager;
 
 use Illuminate\Support\ServiceProvider;
 
+
 class AuthManagerServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +25,12 @@ class AuthManagerServiceProvider extends ServiceProvider
         $this->app->make('rijolee\AuthManager\Controller\MenusController');
         $this->app->make('rijolee\AuthManager\Controller\EventMenusController');
         $this->app->make('rijolee\AuthManager\Controller\UserGroupController');
+
+        $this->app->make('rijolee\AuthManager\Middleware\AuthManagerAccess');
+
+
+        
+        // $this->app->middleware([rijolee\AuthManager\Middleware\AuthManagerAccess::class]);
         
         
         
@@ -54,6 +61,14 @@ class AuthManagerServiceProvider extends ServiceProvider
         $this->app->make('rijolee\AuthManager\Controller\MenusController');
         $this->app->make('rijolee\AuthManager\Controller\EventMenusController');
         $this->app->make('rijolee\AuthManager\Controller\UserGroupController');
+
+        $this->app->make('rijolee\AuthManager\Middleware\AuthManagerAccess');
+
+        // $this->app->middleware('rijolee\AuthManager\Middleware\AuthManagerAccess');
+        
+
+        // $this->app->middleware([rijolee\AuthManager\Middleware\AuthManagerAccess::class]);
+        
         
         
         

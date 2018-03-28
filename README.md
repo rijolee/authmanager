@@ -36,6 +36,25 @@ This package contain migration file that create default tables that for authmana
 php artisan migrate
 ```
 
+## Publish
+this package contain asset js publish this by command
+```bash
+php artisan publish:vendor
+```
+
+## Require
+this package contain middleware that require Auth which is only user that have name authmanager can login into this authority manager ui
+so you will have to register this username into your application
+
+
+## User Model
+this package extends User Model that have primary key 'user_id' so modify your user model
+ ```bash
+    protected $primaryKey = 'user_id';
+```
+
+
+
 ## Getting Start
 to access the view to manager authmanager just put url /auhmanager in your browser
 ```bash
@@ -44,8 +63,10 @@ http://yourproject/authmanager
 voila! you can manage your authority menu and permission for your project
 
 ## Spotlight
-you can access function User::hasEvents($event_id, $menu_id) that return true or false based on your menu id and event id 
+you can access function hasEvents($event_id, $menu_id) inside Users Model that return true or false based on your menu id and event id 
 so you can use it in your system to know wether this user allow some function in your system
+e.q(rijolee\AuthManager\Model\Users::find(1)->hasEvents('E1','M1'))
+
 
 you can access route /authmanager/getmenu/{sys}/{rootid}  to return JSON data your menu based on parameter your system name {sys}
 and your root id {rootid}

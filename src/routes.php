@@ -2,6 +2,18 @@
 
 Route::group(['middleware' => ['web']],function(){
 
+	Route::get('/authmanager/notallowed', [
+			'uses' => 'rijolee\AuthManager\Controller\AuthManagerController@notallowed',
+			'as' => 'authmanager.notallowed'
+		]);
+
+
+});
+	
+
+
+Route::group(['middleware' => ['web','rijolee\AuthManager\Middleware\AuthManagerAccess']],function(){
+
 	//MENU
 
 	Route::get('/authmanager', [

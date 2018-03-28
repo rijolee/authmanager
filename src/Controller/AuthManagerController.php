@@ -28,6 +28,13 @@ class AuthManagerController extends Controller
        	]);
     }
 
+    public function notallowed()
+    {   
+       
+        
+       return view('authmanager::notallowed');
+    }
+
     public function create()
     {   
        
